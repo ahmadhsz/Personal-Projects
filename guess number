@@ -15,7 +15,10 @@ def computer_guess(x):
     high = x
     feedback = ''
     while feedback != 'c':
-        guess = low #or it could be high cause low = high
+        if low != high:
+            guess = random.randint(low, high)
+        else:
+            guess = low #or it could be high cause low = high
         feedback = input(f'Is {guess} too high (H), too low (L) or correct (C) ?? '.lower())
         if feedback == 'h':
             high = guess - 1
