@@ -1,0 +1,21 @@
+import random
+
+
+def is_win(player_a, player_b):
+    # r beats s, s beats p, p beats r
+    if (player_a == 'r' and player_b == 's') or (player_a == 's' and player_b == 'p') or (player_a == 'p' and player_b == 'r'):
+        return True
+
+def play():
+    user =  input("What is your choise? 'r' for rock, 's' for scissors, 'p' for paper.\n")
+    computer = random.choice(['r', 's', 'p'])
+
+    while user != computer:
+        if is_win(user, computer):
+            return 'You Won!'
+        return 'You Lost!'
+        
+    return "It's a tie."
+print(play())
+
+
