@@ -9,5 +9,18 @@ def guess(x):
         elif guess > random_number:
             print("sorry. you are too high")
     print("You've done it")    
-guess(90)
+
+def computer_guess(x):
+    low = 1
+    high = x
+    feedback = ''
+    while feedback != 'c':
+        guess = low #or it could be high cause low = high
+        feedback = input(f'Is {guess} too high (H), too low (L) or correct (C) ?? '.lower())
+        if feedback == 'h':
+            high = guess - 1
+        elif feedback == 'l':
+            low = guess + 1
+    print(f"Done! The computer guessed your number correctly. it's {guess}.")    
+computer_guess(1000)        
 
