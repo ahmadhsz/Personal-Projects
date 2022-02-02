@@ -1,0 +1,43 @@
+# created a function to calculate how much we should pay per month.
+def calculate_payment(principal, annual_interest_rate, duration):
+    # anuual interest rate in input is just a float number, we should change it to monthly (percent)
+    annual_interest_rate = annual_interest_rate / 1200
+    
+    #given duration is in years, should be change to months.
+    duration = duration * 12
+    if annual_interest_rate == 0:
+        return principal / duration
+    else:
+        q = pow(1 + annual_interest_rate, duration)
+        return (principal * (annual_interest_rate * q)) / (q - 1)
+# this function calculates how much of our loan is left.
+def calculate_balance(principal, annual_interest_rate, duration, number_of_payments):
+
+    annual_interest_rate = annual_interest_rate / 1200
+    duration = duration * 12
+    
+    if annual_interest_rate == 0:
+        return principal - principal * (q/duration)
+    else:
+        s = pow(1 + annual_interest_rate, duration)
+        g = pow(1 + annual_interest_rate, number_of_payments)
+        return (principal * (s - g)) / (s - 1)
+
+
+principal=float(input("Enter loan amount: "))
+annual_interest_rate=float(input("Enter annual interest rate (percent): "))
+duration=int(input("Enter loan duration in years: "))
+
+print("LOAN AMOUNT:", int(principal), "INTEREST RATE (PERCENT):", int(annual_interest_rate))
+
+payment = calculate_payment(principal, annual_interest_rate, duration)
+
+print("DURATION (YEARS):", duration, "MONTHLY PAYMENT:", int(payment))
+
+
+for i in range(1, duration + 1):
+    balance = calculate_balance(principal, annual_interest_rate, duration, i * 12)
+    payed = i * 12 * payment
+    print("YEAR:", i, "BALANCE:", int(balance), "TOTAL PAYMENT", int(payed))
+    
+    
