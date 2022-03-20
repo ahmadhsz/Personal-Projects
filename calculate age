@@ -1,0 +1,28 @@
+from datetime import datetime
+
+class Age:
+    
+    
+    
+    def __init__(self, year, month, day):
+        self.year = year
+        self.month = month
+        self.day = day
+    
+    def calculate(self, today):
+        self.today = today
+        today = str(datetime.now().date()).split("-")
+        if int(today[1]) > self.month:
+            age = int(today[0]) - self.year
+        elif int(today[1]) == self.month and int(today[2]) >= self.day:
+            age = int(today[0]) - self.year
+        else:
+            age = int(today[0]) - self.year -1
+        print(age)
+date = input("what is your birthdaye? ").split("/")        
+if int(date[1]) > 12 or int(date[2]) > 31:
+    print('WRONG')
+else:
+    person = Age(int(date[0]), int(date[1]), int(date[2]))
+    person.calculate(datetime.now())   
+      
